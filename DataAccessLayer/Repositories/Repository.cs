@@ -1,4 +1,4 @@
-﻿using DataAccessLayer;
+﻿using DataAccessLayer.Context;
 
 public class Repository<T> : IRepository<T> where T : class
 {
