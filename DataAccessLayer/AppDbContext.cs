@@ -1,7 +1,15 @@
-﻿namespace DataAccessLayer
-{
-    public class Class1
-    {
+﻿using DataAccessLayer.Entities;
+using Microsoft.EntityFrameworkCore;
 
+namespace DataAccessLayer
+{
+    public class AppDbContext : DbContext
+    {
+        public DbSet<Message> Messages { get; set; }
+
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {
+        }
     }
 }

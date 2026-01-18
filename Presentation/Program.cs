@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataAccessLayer;
+using Microsoft.EntityFrameworkCore;
+
 namespace WasteCollectionPlatform
 {
     public class Program
@@ -7,16 +9,41 @@ namespace WasteCollectionPlatform
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // =========================
+            // ADD SERVICES
+            // =========================
 
+            // Controllers
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+            // Swagger
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // DbContext
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("Default")
+                ));
+
+            // Unit Of Work
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            // Business Service
+            builder.Services.AddScoped<IMessageService, MessageService>();
+
+            // Firebase (demo)
+            builder.Services.AddSingleton<FirebaseService>();
+
+            // SignalR
+            builder.Services.AddSignalR();
+
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // =========================
+            // MIDDLEWARE
+            // =========================
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -27,8 +54,13 @@ namespace WasteCollectionPlatform
 
             app.UseAuthorization();
 
+            // =========================
+            // MAP ENDPOINTS
+            // =========================
+            app.UseStaticFiles();
 
             app.MapControllers();
+            app.MapHub<ChatHub>("/chatHub");
 
             app.Run();
         }
