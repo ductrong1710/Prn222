@@ -1,7 +1,7 @@
 ﻿using DataAccessLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccessLayer.Context
+namespace DataAccessLayer
 {
     public class AppDbContext : DbContext
     {
