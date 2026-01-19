@@ -4,10 +4,23 @@ namespace DataAccessLayer.UnitOfWork;
 
 public class UnitOfWork : IUnitOfWork
 {
-    public IMessageRepository Messages { get; }
+    private readonly AppDbContext _context;
+    private IMessageRepository? _messages;
 
-    public UnitOfWork(IMessageRepository messages)
+    public UnitOfWork(AppDbContext context)
     {
-        Messages = messages;
+        _context = context;
+    }
+
+    public IMessageRepository Messages => _messages ??= new MessageRepository(_context);
+
+    public async Task<int> SaveChangesAsync()
+    {
+        return await _context.SaveChangesAsync();
+    }
+
+    public void Dispose()
+    {
+        _context.Dispose();
     }
 }

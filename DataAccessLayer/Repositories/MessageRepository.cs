@@ -1,19 +1,29 @@
 using DataAccessLayer.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repositories;
 
 public class MessageRepository : IMessageRepository
 {
-    private static List<Message> _messages = new();
+    private readonly AppDbContext _context;
 
-    public Task AddAsync(Message message)
+    public MessageRepository(AppDbContext context)
     {
-        _messages.Add(message);
-        return Task.CompletedTask;
+        _context = context;
     }
 
-    public Task<List<Message>> GetAllAsync()
+    public async Task AddAsync(Message message)
     {
-        return Task.FromResult(_messages);
+        await _context.Messages.AddAsync(message);
+    }
+
+    public async Task<List<Message>> GetAllAsync()
+    {
+        return await _context.Messages.OrderByDescending(m => m.CreatedAt).ToListAsync();
+    }
+
+    public async Task<Message?> GetByIdAsync(int id)
+    {
+        return await _context.Messages.FindAsync(id);
     }
 }

@@ -1,3 +1,10 @@
 [Bb]in/
 [Oo]bj/
 .vs/
+
+# Firebase credentials - DO NOT COMMIT
+*firebase-adminsdk*.json
+firebase-credentials.json
+
+# User secrets
+appsettings.*.local.json

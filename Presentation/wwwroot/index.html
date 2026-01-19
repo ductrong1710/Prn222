@@ -1,0 +1,532 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo SignalR + Firebase - PRN222</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .panels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+            .panel h2 {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+                border-bottom: 2px solid #eee;
+            }
+
+                .panel h2.signalr {
+                    color: #5c2d91;
+                }
+
+                .panel h2.firebase {
+                    color: #ff9800;
+                }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+            .status.connected {
+                background: #e8f5e9;
+                color: #2e7d32;
+            }
+
+            .status.disconnected {
+                background: #ffebee;
+                color: #c62828;
+            }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status.connected .status-dot {
+            background: #4caf50;
+        }
+
+        .status.disconnected .status-dot {
+            background: #f44336;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 600;
+                color: #333;
+            }
+
+            .form-group input, .form-group textarea {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #e0e0e0;
+                border-radius: 8px;
+                font-size: 14px;
+                transition: border-color 0.3s;
+            }
+
+                .form-group input:focus, .form-group textarea:focus {
+                    outline: none;
+                    border-color: #667eea;
+                }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-signalr {
+            background: linear-gradient(135deg, #5c2d91, #8e44ad);
+            color: white;
+        }
+
+            .btn-signalr:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 20px rgba(92,45,145,0.4);
+            }
+
+        .btn-firebase {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+        }
+
+            .btn-firebase:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 20px rgba(255,152,0,0.4);
+            }
+
+        .btn-test {
+            background: linear-gradient(135deg, #4caf50, #388e3c);
+            color: white;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .messages-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            height: 250px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .message {
+            background: white;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .message .user {
+            font-weight: 700;
+            color: #5c2d91;
+        }
+
+        .message .time {
+            font-size: 11px;
+            color: #999;
+            float: right;
+        }
+
+        .message .content {
+            margin-top: 5px;
+            color: #333;
+        }
+
+        .log-container {
+            background: #263238;
+            border-radius: 10px;
+            padding: 15px;
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+            font-family: 'Consolas', monospace;
+        }
+
+        .log-entry {
+            padding: 5px 0;
+            font-size: 13px;
+            border-bottom: 1px solid #37474f;
+        }
+
+            .log-entry.success {
+                color: #4caf50;
+            }
+
+            .log-entry.error {
+                color: #f44336;
+            }
+
+            .log-entry.info {
+                color: #2196f3;
+            }
+
+        .architecture {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+            .architecture h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #333;
+            }
+
+        .arch-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .arch-box {
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            color: white;
+        }
+
+            .arch-box.presentation {
+                background: #2196f3;
+            }
+
+            .arch-box.business {
+                background: #9c27b0;
+            }
+
+            .arch-box.data {
+                background: #4caf50;
+            }
+
+            .arch-box.signalr {
+                background: #5c2d91;
+            }
+
+            .arch-box.firebase {
+                background: #ff9800;
+            }
+
+        .arch-arrow {
+            font-size: 24px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Demo: 3-Layer Architecture + SignalR + Firebase</h1>
+        <p class="subtitle">PRN222 - Kiến trúc 3 Layer với Unit of Work Pattern</p>
+
+        <div class="panels">
+            <div class="panel">
+                <h2 class="signalr"><span>📡</span> SignalR Real-time Chat</h2>
+                <div id="signalrStatus" class="status disconnected">
+                    <span class="status-dot"></span>
+                    <span id="statusText">Đang kết nối...</span>
+                </div>
+                <div class="form-group">
+                    <label>👤 Tên người dùng:</label>
+                    <input type="text" id="userName" placeholder="Nhập tên của bạn" value="GiangVien">
+                </div>
+                <div class="form-group">
+                    <label>💬 Tin nhắn:</label>
+                    <input type="text" id="messageInput" placeholder="Nhập tin nhắn...">
+                </div>
+                <button class="btn btn-signalr" onclick="sendMessage()">📤 Gửi tin nhắn (SignalR)</button>
+                <div class="messages-container" id="messagesContainer">
+                    <div style="text-align: center; color: #999; padding: 20px;">
+                        Tin nhắn sẽ hiển thị ở đây (real-time)
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2 class="firebase"><span>🔔</span> Firebase Cloud Messaging</h2>
+                <button class="btn btn-test" onclick="testFirebase()">🧪 Test Firebase Connection</button>
+                <div class="form-group">
+                    <label>📌 Topic:</label>
+                    <input type="text" id="topic" placeholder="Nhập topic" value="test">
+                </div>
+                <div class="form-group">
+                    <label>📝 Tiêu đề:</label>
+                    <input type="text" id="notifTitle" placeholder="Tiêu đề notification" value="Thông báo PRN222">
+                </div>
+                <div class="form-group">
+                    <label>📄 Nội dung:</label>
+                    <textarea id="notifBody" rows="2" placeholder="Nội dung notification">Đây là tin nhắn test từ Firebase!</textarea>
+                </div>
+                <button class="btn btn-firebase" onclick="sendNotification()">🚀 Gửi Push Notification</button>
+                <div class="log-container" id="logContainer">
+                    <div class="log-entry info">📋 Logs sẽ hiển thị ở đây...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="architecture">
+            <h2>🏗️ Kiến trúc 3-Layer với Unit of Work</h2>
+            <div class="arch-diagram">
+                <div class="arch-box presentation">📱 Presentation<br><small>Controllers, Hubs</small></div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-box business">⚙️ Business Logic<br><small>Services, DTOs</small></div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-box data">💾 Data Access<br><small>Repository, UoW</small></div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-box" style="background: #607d8b;">🗄️ MySQL<br><small>Database</small></div>
+            </div>
+            <div class="arch-diagram" style="margin-top: 20px;">
+                <div class="arch-box signalr">📡 SignalR Hub<br><small>/chathub</small></div>
+                <span class="arch-arrow">↔️</span>
+                <div class="arch-box" style="background: #2196f3;">🌐 Web Client<br><small>Real-time</small></div>
+                <span style="margin: 0 30px; color: #666;">|</span>
+                <div class="arch-box firebase">🔔 Firebase FCM<br><small>Push Notification</small></div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-box" style="background: #795548;">📱 Devices<br><small>Mobile/Web</small></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script>const API_URL = 'http://localhost:5021';
+        let connection = null;
+
+        async function initSignalR() {
+            connection = new signalR.HubConnectionBuilder()
+                .withUrl(`${API_URL}/chathub`)
+                .withAutomaticReconnect()
+                .configureLogging(signalR.LogLevel.Information)
+                .build();
+
+            connection.on("ReceiveMessage", (message) => {
+                console.log("Received message:", message);
+                addMessage(message);
+                addLog(`📨 Nhận tin nhắn từ ${message.user}`, 'success');
+            });
+
+            connection.on("LoadMessages", (messages) => {
+                messages.forEach(msg => addMessage(msg));
+                addLog(`📥 Đã load ${messages.length} tin nhắn`, 'info');
+            });
+
+            connection.onclose(() => {
+                updateStatus(false);
+                addLog('❌ Mất kết nối SignalR', 'error');
+            });
+
+            connection.onreconnecting(() => {
+                addLog('🔄 Đang kết nối lại...', 'info');
+            });
+
+            connection.onreconnected(() => {
+                updateStatus(true);
+                addLog('✅ Đã kết nối lại SignalR', 'success');
+            });
+
+            try {
+                await connection.start();
+                updateStatus(true);
+                addLog('✅ Kết nối SignalR thành công!', 'success');
+                await connection.invoke("GetAllMessages");
+            } catch (err) {
+                updateStatus(false);
+                addLog(`❌ Lỗi kết nối: ${err.message}`, 'error');
+                console.error(err);
+            }
+        }
+
+        function updateStatus(connected) {
+            const statusEl = document.getElementById('signalrStatus');
+            const statusText = document.getElementById('statusText');
+            if (connected) {
+                statusEl.className = 'status connected';
+                statusText.textContent = 'Đã kết nối';
+            } else {
+                statusEl.className = 'status disconnected';
+                statusText.textContent = 'Chưa kết nối';
+            }
+        }
+
+        async function sendMessage() {
+            const user = document.getElementById('userName').value.trim();
+            const content = document.getElementById('messageInput').value.trim();
+            if (!user || !content) {
+                alert('Vui lòng nhập tên và tin nhắn!');
+                return;
+            }
+            try {
+                await connection.invoke("SendMessage", user, content);
+                document.getElementById('messageInput').value = '';
+                addLog(`📤 Đã gửi tin nhắn: "${content}"`, 'success');
+            } catch (err) {
+                addLog(`❌ Lỗi gửi tin nhắn: ${err.message}`, 'error');
+            }
+        }
+
+        function addMessage(message) {
+            const container = document.getElementById('messagesContainer');
+            if (container.querySelector('div[style]')) {
+                container.innerHTML = '';
+            }
+            const time = new Date(message.createdAt).toLocaleTimeString('vi-VN');
+            const msgEl = document.createElement('div');
+            msgEl.className = 'message';
+            msgEl.innerHTML = `
+                <span class="user">${message.user}</span>
+                <span class="time">${time}</span>
+                <div class="content">${message.content}</div>
+            `;
+            container.insertBefore(msgEl, container.firstChild);
+        }
+
+        async function testFirebase() {
+            addLog('🧪 Đang test Firebase connection...', 'info');
+            try {
+                const response = await fetch(`${API_URL}/api/Notification/test`);
+                const data = await response.json();
+                if (data.success) {
+                    addLog(`✅ Firebase OK! Project: ${data.projectId}`, 'success');
+                } else {
+                    addLog(`⚠️ ${data.message}`, 'error');
+                }
+            } catch (err) {
+                addLog(`❌ Lỗi: ${err.message}`, 'error');
+            }
+        }
+
+        async function sendNotification() {
+            const topic = document.getElementById('topic').value.trim();
+            const title = document.getElementById('notifTitle').value.trim();
+            const body = document.getElementById('notifBody').value.trim();
+            if (!topic || !title || !body) {
+                alert('Vui lòng nhập đầy đủ thông tin!');
+                return;
+            }
+            addLog(`🚀 Đang gửi notification đến topic "${topic}"...`, 'info');
+            try {
+                const response = await fetch(`${API_URL}/api/Notification/send-to-topic`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ topic, title, body })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    addLog(`✅ ${data.message}`, 'success');
+                } else {
+                    addLog(`❌ ${data.message}`, 'error');
+                }
+            } catch (err) {
+                addLog(`❌ Lỗi: ${err.message}`, 'error');
+            }
+        }
+
+        function addLog(message, type = 'info') {
+            const container = document.getElementById('logContainer');
+            const logEl = document.createElement('div');
+            logEl.className = `log-entry ${type}`;
+            const time = new Date().toLocaleTimeString('vi-VN');
+            logEl.textContent = `[${time}] ${message}`;
+            container.appendChild(logEl);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        document.getElementById('messageInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        initSignalR();</script>
+</body>
+</html>
