@@ -29,7 +29,7 @@
                         @inject IHttpContextAccessor HttpContextAccessor
 
                         @{
-                            var memberId = HttpContextAccessor.HttpContext.Session.GetString("MemberID"); // Nhớ sửa key cho khớp
+                            var memberId = HttpContextAccessor.HttpContext.Session.GetString("MemberID");
                         }
 
                         @if (memberId != null)

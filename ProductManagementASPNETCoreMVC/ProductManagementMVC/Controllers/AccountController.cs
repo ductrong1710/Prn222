@@ -24,22 +24,21 @@ namespace ProductManagementMVC.Controllers
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
-            // Kiểm tra thông tin đăng nhập qua Service
-            var account = _accountService.GetAccountById(email); // Lưu ý: Trong AccountDAO bạn đang dùng ID là Email hoặc MemberID, hãy kiểm tra lại logic này trong DAO nhé.
+            var account = _accountService.GetAccountById(email);
 
-            // Giả sử trong Lab này MemberID chính là Email hoặc bạn nhập ID vào ô User
-            if (account != null && account.MemberPassword == password) // So sánh password (trong thực tế nên mã hóa)
+            // Kiểm tra tài khoản và mật khẩu
+            if (account != null && account.MemberPassword == password)
             {
-                // Mật khẩu đúng -> Lưu thông tin vào Session
+                // 1. Lưu thông tin vào Session
                 HttpContext.Session.SetString("UserEmail", account.EmailAddress);
+                HttpContext.Session.SetString("MemberID", account.MemberId);
                 HttpContext.Session.SetString("Role", account.MemberRole.ToString());
 
-                // Chuyển hướng sang trang quản lý sản phẩm
                 return RedirectToAction("Index", "Products");
             }
 
-            // Mật khẩu sai
-            ViewBag.Error = "Invalid email or password";
+            // Đăng nhập thất bại
+            ViewBag.Error = "Invalid Member ID or Password";
             return View();
         }
 

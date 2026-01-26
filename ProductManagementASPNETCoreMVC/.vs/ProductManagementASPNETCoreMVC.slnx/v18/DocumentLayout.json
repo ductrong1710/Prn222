@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|d:\\learning\\sp26\\prn222\\lab1\\productmanagementaspnetcoremvc\\productmanagementmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|solutionrelative:productmanagementmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|d:\\learning\\sp26\\prn222\\lab1\\productmanagementaspnetcoremvc\\productmanagementmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|solutionrelative:productmanagementmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|d:\\learning\\sp26\\prn222\\lab1\\productmanagementaspnetcoremvc\\productmanagementmvc\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|solutionrelative:productmanagementmvc\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|d:\\learning\\sp26\\prn222\\lab1\\productmanagementaspnetcoremvc\\productmanagementmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|solutionrelative:productmanagementmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|d:\\learning\\sp26\\prn222\\lab1\\productmanagementaspnetcoremvc\\productmanagementmvc\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|solutionrelative:productmanagementmvc\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|d:\\learning\\sp26\\prn222\\lab1\\productmanagementaspnetcoremvc\\productmanagementmvc\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|solutionrelative:productmanagementmvc\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70A9CF0E-3E5C-95B8-6235-E237D7B72214}|ProductManagementMVC\\ProductManagementMVC.csproj|d:\\learning\\sp26\\prn222\\lab1\\productmanagementaspnetcoremvc\\productmanagementmvc\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -122,17 +122,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\ProductManagementMVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "ProductManagementMVC\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\ProductManagementMVC\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "ProductManagementMVC\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAC8AAAAAAAAAAADwv0cAAAAAAAAAAAAAAA==",
+              "ToolTip": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\ProductManagementMVC\\Views\\Shared\\_Layout.cshtml*",
+              "RelativeToolTip": "ProductManagementMVC\\Views\\Shared\\_Layout.cshtml*",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACIAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-01-26T01:14:17.934Z",
               "EditorCaption": ""
@@ -147,18 +147,17 @@
               "RelativeToolTip": "ProductManagementMVC\\Views\\Account\\Login.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-26T00:58:09.613Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-26T00:58:09.613Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\ProductManagementMVC\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "ProductManagementMVC\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\ProductManagementMVC\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "ProductManagementMVC\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwBEAAAAiAAAAAAAAAA==",
+              "ToolTip": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\ProductManagementMVC\\Controllers\\AccountController.cs*",
+              "RelativeToolTip": "ProductManagementMVC\\Controllers\\AccountController.cs*",
+              "ViewState": "AgIAABcAAAAAAAAAAADwvxoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-26T00:56:39.643Z",
               "EditorCaption": ""
@@ -173,8 +172,7 @@
               "RelativeToolTip": "BusinessObjects\\Product.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAxwBIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T00:46:56.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-26T00:46:56.577Z"
             },
             {
               "$type": "Document",
@@ -186,12 +184,11 @@
               "RelativeToolTip": "BusinessObjects\\AccountMember.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:27:42.138Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:27:42.138Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ProductsController.cs",
               "DocumentMoniker": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\ProductManagementMVC\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "ProductManagementMVC\\Controllers\\ProductsController.cs",
@@ -199,18 +196,17 @@
               "RelativeToolTip": "ProductManagementMVC\\Controllers\\ProductsController.cs",
               "ViewState": "AgIAAG8AAAAAAAAAAAAAAB0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T06:44:48.573Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T06:44:48.573Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\ProductManagementMVC\\Program.cs",
               "RelativeDocumentMoniker": "ProductManagementMVC\\Program.cs",
-              "ToolTip": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\ProductManagementMVC\\Program.cs",
-              "RelativeToolTip": "ProductManagementMVC\\Program.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBYAAAAAAAAAAAAAAA==",
+              "ToolTip": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\ProductManagementMVC\\Program.cs*",
+              "RelativeToolTip": "ProductManagementMVC\\Program.cs*",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-23T06:41:03.7Z",
               "EditorCaption": ""
@@ -225,8 +221,7 @@
               "RelativeToolTip": "BusinessObjects\\Category.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-26T00:22:42.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-26T00:22:42.59Z"
             },
             {
               "$type": "Document",
@@ -250,21 +245,19 @@
               "RelativeToolTip": "Services\\Services\\CategoryService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAwBUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T06:35:49.104Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T06:35:49.104Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Services",
+              "Title": "Services.csproj",
               "DocumentMoniker": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\Services\\Services.csproj",
               "RelativeDocumentMoniker": "Services\\Services.csproj",
               "ToolTip": "D:\\Learning\\SP26\\PRN222\\lab1\\ProductManagementASPNETCoreMVC\\Services\\Services.csproj",
               "RelativeToolTip": "Services\\Services.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-26T00:23:16.58Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-26T00:23:16.58Z"
             },
             {
               "$type": "Document",
@@ -276,8 +269,7 @@
               "RelativeToolTip": "Repositories\\Repositories.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-23T06:30:34.75Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T06:30:34.75Z"
             },
             {
               "$type": "Document",
@@ -313,8 +305,7 @@
               "RelativeToolTip": "ProductManagementMVC\\ProductManagementMVC.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-23T06:10:22.853Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T06:10:22.853Z"
             },
             {
               "$type": "Document",
